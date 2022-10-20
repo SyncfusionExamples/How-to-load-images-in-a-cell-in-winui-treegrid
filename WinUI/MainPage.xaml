@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="WinUI_TreeGrid.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI_TreeGrid"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:syncfusion="using:Syncfusion.UI.Xaml.TreeGrid"
+    xmlns:datagrid="using:Syncfusion.UI.Xaml.DataGrid"
+    xmlns:data="using:Syncfusion.UI.Xaml.Data"
+     xmlns:coreconverter="using:Syncfusion.UI.Xaml.Core.Converters"
+    xmlns:coreextension="using:Syncfusion.UI.Xaml.Core.Extensions"
+    mc:Ignorable="d" >
+
+    <Page.DataContext>
+        <local:ViewModel />
+    </Page.DataContext>
+    
+    <Page.Resources>
+        <local:StringToImageConverter x:Key="converter" />
+    </Page.Resources>
+
+    <Grid>
+        <syncfusion:SfTreeGrid Margin="5" Name="treeGrid"
+                            Grid.Row="0"                   
+                            AutoGenerateColumns="False"
+                            CheckBoxSelectionMode="Default"
+                            AutoExpandMode="RootNodesExpanded"
+                            ChildPropertyName="ReportsTo"
+                            ExpanderColumn="ID" 
+                            AllowResizingColumns="True"
+                            NavigationMode="Cell" AllowEditing="True"
+                            ParentPropertyName="ID"
+                            SelfRelationRootValue="-1"
+                            SelectionMode="Single" 
+                            ItemsSource="{Binding EmployeeDetails}" >
+            <syncfusion:SfTreeGrid.Columns>
+                <syncfusion:TreeGridTextColumn MappingName="FirstName"/>
+                <syncfusion:TreeGridTextColumn MappingName="LastName"/>
+                <syncfusion:TreeGridTextColumn MappingName="Department"/>
+                <syncfusion:TreeGridTextColumn MappingName="Title"/>
+                <syncfusion:TreeGridTemplateColumn HeaderText="Country" MappingName="ImageLink">
+                    <syncfusion:TreeGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Image Width="30"
+                                       Height="20"
+                                       Source="{Binding ImageLink,
+                                                        Converter={StaticResource converter}}" />
+                            </Grid>
+                        </DataTemplate>
+                    </syncfusion:TreeGridTemplateColumn.CellTemplate>
+                </syncfusion:TreeGridTemplateColumn>
+            </syncfusion:SfTreeGrid.Columns>
+        </syncfusion:SfTreeGrid>
+    </Grid>
+</Page>
