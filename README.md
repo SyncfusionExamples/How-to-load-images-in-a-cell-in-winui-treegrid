@@ -1,8 +1,8 @@
-# How to load images in a cell in WinUI TreeGrid?
+# How to Load Images in a Cell in WinUI TreeGrid?
 
-This example describes how to load images in a cell in WinUI TreeGrid.
+This example describes how to load images in a cell in [WinUI TreeGrid](https://www.syncfusion.com/winui-controls/treegrid) (SfTreeGrid).
 
-You can add the image to [WinUI TreeGrid](https://www.syncfusion.com/winui-controls/treegrid) (SfTreeGrid) cell by using **TreeGridTemplateColumn**.
+You can add the image to `TreeGrid` cell by using `TreeGridTemplateColumn`.
 
 ### XAML
 
@@ -74,3 +74,5 @@ class StringToImageConverter : IValueConverter
     }
 }
 ```
+
+![Load images in a cell in TreeGrid](TreeGridLoadedWithImage.png)
